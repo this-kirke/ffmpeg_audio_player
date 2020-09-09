@@ -1,0 +1,53 @@
+{
+"version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Generate",
+            "command": "cmake",
+            "args": [
+                "-S", "ffmpeg_audio_playback",
+                "-B", "build",
+                "-D", "CMAKE_BUILD_TYPE=Debug",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [ "$gcc" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Build",
+            "command": "cmake",
+            "args": [
+                "--build", "build",
+            ],
+            "dependsOn" : [ "Generate" ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [ "$gcc" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Clean",
+            "command": "rm -rf build",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [ "$gcc" ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}
